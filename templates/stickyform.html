@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Note</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='image/postit.png') }}"/>
+    <link href="{{ url_for('static', filename='css/default.css') }}" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Oswald:300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light+Two' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="header">
+        <div class="slogo">
+            <img src="{{ url_for('static', filename='image/postit.png') }}" alt="logo" />
+            <h1>My Post it</h1>
+        </div>
+        <div class="sbuttons">
+            <a href="{{ url_for('home') }}" class="btn btn-blue">Home</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="sform" >
+            <form method="POST">
+              <label>Name</label>
+              <input type="text" name="name" placeholder="Please give name...">
+          
+              <label>Content</label>
+              <input type="text" name="content" placeholder="Please give content...">
+                  
+              <input type="submit" value="Post it">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
