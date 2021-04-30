@@ -9,6 +9,7 @@ def home():
     notes = loadJSONDB()
     return render_template("stickynote.html", notes=notes)
 
+
 @app.route('/add_note', methods=['GET', 'POST'])
 def add_note():
     db = loadJSONDB()
@@ -23,6 +24,22 @@ def add_note():
         return redirect(url_for('home'))
     else: 
         return render_template('stickyform.html')
+
+
+@app.route('/about')
+def about():
+    return render_template("stickyabout.html")
+
+
+@app.route('/del_note/<int:note_id>', methods=['GET'])
+def del_note(note_id):
+    db = loadJSONDB()
+    for index, aNote in enumerate(db):
+        if (index == note_id):
+            db.remove(aNote)
+            saveJSONDB(db)
+    return redirect(url_for('home'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
